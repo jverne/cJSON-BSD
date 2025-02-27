@@ -37,7 +37,6 @@
 #pragma warning (disable : 4001)
 #endif
 
-#pragma GCC diagnostic ignored "-Wshadow"
 #include <string.h>
 #include <stdio.h>
 #include <math.h>

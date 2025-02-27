@@ -35,7 +35,6 @@
 #endif
 
 #include <ctype.h>
-#pragma GCC diagnostic ignored "-Wshadow"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
