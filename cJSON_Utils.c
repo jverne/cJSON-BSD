@@ -271,6 +271,7 @@ static cJSON *get_array_item(const cJSON *array, size_t item)
     return child;
 }
 
+#pragma GCC diagnostic ignored "-Wshadow"
 static cJSON_bool decode_array_index_from_pointer(const unsigned char * const pointer, size_t * const index)
 {
     size_t parsed_index = 0;
@@ -297,7 +298,9 @@ static cJSON_bool decode_array_index_from_pointer(const unsigned char * const po
 
     return 1;
 }
+#pragma GCC diagnostic error "-Wshadow"
 
+#pragma GCC diagnostic ignored "-Wshadow"
 static cJSON *get_item_from_pointer(cJSON * const object, const char * pointer, const cJSON_bool case_sensitive)
 {
     cJSON *current_element = object;
@@ -344,6 +347,7 @@ static cJSON *get_item_from_pointer(cJSON * const object, const char * pointer, 
 
     return current_element;
 }
+#pragma GCC diagnostic error "-Wshadow"
 
 CJSON_PUBLIC(cJSON *) cJSONUtils_GetPointer(cJSON * const object, const char *pointer)
 {
@@ -427,6 +431,7 @@ static cJSON *detach_item_from_array(cJSON *array, size_t which)
 }
 
 /* detach an item at the given path */
+#pragma GCC diagnostic ignored "-Wshadow"
 static cJSON *detach_path(cJSON *object, const unsigned char *path, const cJSON_bool case_sensitive)
 {
     unsigned char *parent_pointer = NULL;
@@ -479,6 +484,7 @@ cleanup:
 
     return detached_item;
 }
+#pragma GCC diagnostic error "-Wshadow"
 
 /* sort lists using mergesort */
 static cJSON *sort_list(cJSON *list, const cJSON_bool case_sensitive)
@@ -804,6 +810,7 @@ static void overwrite_item(cJSON * const root, const cJSON replacement)
     memcpy(root, &replacement, sizeof(cJSON));
 }
 
+#pragma GCC diagnostic ignored "-Wshadow"
 static int apply_patch(cJSON *object, const cJSON *patch, const cJSON_bool case_sensitive)
 {
     cJSON *path = NULL;
@@ -1034,6 +1041,7 @@ cleanup:
 
     return status;
 }
+#pragma GCC diagnostic error "-Wshadow"
 
 CJSON_PUBLIC(int) cJSONUtils_ApplyPatches(cJSON * const object, const cJSON * const patches)
 {
@@ -1138,6 +1146,7 @@ CJSON_PUBLIC(void) cJSONUtils_AddPatchToArray(cJSON * const array, const char * 
     compose_patch(array, (const unsigned char*)operation, (const unsigned char*)path, NULL, value);
 }
 
+#pragma GCC diagnostic ignored "-Wshadow"
 static void create_patches(cJSON * const patches, const unsigned char * const path, cJSON * const from, cJSON * const to, const cJSON_bool case_sensitive)
 {
     if ((from == NULL) || (to == NULL))
@@ -1277,6 +1286,7 @@ static void create_patches(cJSON * const patches, const unsigned char * const pa
             break;
     }
 }
+#pragma GCC diagnostic error "-Wshadow"
 
 CJSON_PUBLIC(cJSON *) cJSONUtils_GeneratePatches(cJSON * const from, cJSON * const to)
 {

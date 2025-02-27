@@ -1866,6 +1866,7 @@ CJSON_PUBLIC(int) cJSON_GetArraySize(const cJSON *array)
     return (int)size;
 }
 
+#pragma GCC diagnostic ignored "-Wshadow"
 static cJSON* get_array_item(const cJSON *array, size_t index)
 {
     cJSON *current_child = NULL;
@@ -1884,7 +1885,9 @@ static cJSON* get_array_item(const cJSON *array, size_t index)
 
     return current_child;
 }
+#pragma GCC diagnostic error "-Wshadow"
 
+#pragma GCC diagnostic ignored "-Wshadow"
 CJSON_PUBLIC(cJSON *) cJSON_GetArrayItem(const cJSON *array, int index)
 {
     if (index < 0)
@@ -1894,6 +1897,7 @@ CJSON_PUBLIC(cJSON *) cJSON_GetArrayItem(const cJSON *array, int index)
 
     return get_array_item(array, (size_t)index);
 }
+#pragma GCC diagnostic error "-Wshadow"
 
 static cJSON *get_object_item(const cJSON * const object, const char * const name, const cJSON_bool case_sensitive)
 {
